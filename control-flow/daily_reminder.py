@@ -9,23 +9,20 @@ def daily_reminder():
     # Match-case for priority level
     match priority:
         case "high":
-            message = f"'{task}' is a high priority task"
+            base_message = f"'{task}' is a high priority task"
         case "medium":
-            message = f"'{task}' is a medium priority task"
+            base_message = f"'{task}' is a medium priority task"
         case "low":
-            message = f"'{task}' is a low priority task"
+            base_message = f"'{task}' is a low priority task"
         case _:
             print("Invalid priority. Please enter high, medium, or low.")
             return
 
-    # Add time-sensitive message if applicable
+    # Construct final message
     if time_bound == "yes":
-        message += " that requires immediate attention today!"
+        print(f"Reminder: {base_message} that requires immediate attention today!")
     else:
-        message = "Note: " + message + ". Consider completing it when you have free time."
-
-    # Print the final reminder
-    print("\nReminder:", message)
+        print(f"Reminder: Note: {base_message}. Consider completing it when you have free time.")
 
 # Run the program
 if __name__ == "__main__":
